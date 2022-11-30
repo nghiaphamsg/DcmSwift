@@ -193,7 +193,7 @@ public class DicomImage {
         let data = self.frames[frame]
         
         if TransferSyntax.transfersSyntaxes.contains(self.dataset.transferSyntax.tsUID) {
-            if let cgim = self.imageFromPixels(size: size, pixels: data.toUnsigned8Array(), width: self.columns, height: self.rows) {
+            if let cgim = self.imageFromPixels(size: size, pixels: data.toUnsigned32Array(), width: self.columns, height: self.rows) {
                 return NSImage(cgImage: cgim, size: size)
             }
         }
@@ -215,7 +215,7 @@ public class DicomImage {
         let size = NSSize(width: self.columns, height: self.rows)
         let data = self.frames[frame]
 
-        if let cgim = self.imageFromPixels(size: size, pixels: data.toUnsigned8Array(), width: self.columns, height: self.rows) {
+        if let cgim = self.imageFromPixels(size: size, pixels: data.toUnsigned32Array(), width: self.columns, height: self.rows) {
             return UIImage(cgImage: cgim, size: size)
         }
 
@@ -393,7 +393,7 @@ public class DicomImage {
                 // OW/OB multiframe
                 if self.numberOfFrames > 1 {
                     let frameSize = pixelDataElement.length / self.numberOfFrames
-                    let chuncks = pixelDataElement.data.toUnsigned8Array().chunked(into: frameSize)
+                    let chuncks = pixelDataElement.data.toUnsigned32Array().chunked(into: frameSize)
                     
                     for c in chuncks {
                         self.frames.append(Data(c))
