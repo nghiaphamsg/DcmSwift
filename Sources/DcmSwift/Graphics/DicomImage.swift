@@ -250,7 +250,7 @@ public class DicomImage {
             }
         }
         
-        self.bitsPerPixel = self.samplesPerPixel * self.bitsStored
+        self.bitsPerPixel = self.samplesPerPixel * self.bitsAllocated
         self.bytesPerRow  = width * (self.bitsAllocated / 8) * samplesPerPixel
         let dataLength = height * bytesPerRow // ??
         
