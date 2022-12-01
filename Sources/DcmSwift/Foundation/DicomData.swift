@@ -118,13 +118,6 @@ extension Data {
         return self.map { $0 }
     }
 
-//     public func toUnsigned16Array() -> [UInt16] {
-//         return self.map { UInt16($0) }
-//     }
-
-//     public func toUnsigned32Array() -> [UInt32] {
-//         return self.map { UInt32($0) }
-//     }
     
     public func toSigned8Array() -> [Int8] {
         return self.map { Int8(bitPattern: $0) }
