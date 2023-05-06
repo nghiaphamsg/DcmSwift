@@ -242,7 +242,7 @@ public class DicomImage {
                 
 
             } else if self.photoInter == .MONOCHROME2 {
-
+                bitmapInfo = CGBitmapInfo.byteOrder16Host
             }
         } else {
             if self.photoInter != .ARGB {
